@@ -198,5 +198,20 @@ class Lands(models.Model):
 
     def __str__(self):
         return self.land_details
+
+class pesticides_vendor(models.Model):
+
+    pesticides_vendor_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="pesticides vendor Name")
+    pesticides_shop_name = models.CharField(max_length=120, blank=True, null=True,verbose_name="pesticides shop name")
+    pesticides_vendor_phone number = models.CharField(max_length=13, blank=True,null=True,verbose_name="pesticides vendor_phone number")
+    pesticides_vendor_email = models.EmailField(blank=True, null=True, verbose_name= "Email Address")
+    pesticides_vendor_village = models.CharField(max_length=1,blank=True,null=True,verbose_name="pesticides vendor_village")
+    pesticides_vendor_taluk = models.CharField(max_length=1,blank=True,null=True,verbose_name="pesticides vendor_taluk")
+    pesticides_vendor_district = models.CharField(max_length=1,blank=True,null=True,verbose_name="pesticides vendor_district")
+    pesticides_vendor_pincode = models.CharField(max_length=20,blank=True,null=True,verbose_name="pesticides vendor_pincode")
+    pesticides_vendor_availability = models.CharField(max_length=200, blank=True, null=True, verbose_name= "pesticides vendor_availability")
+   
+    def __str__(self):
+        return self.pesticides_vendor_name
     
     
