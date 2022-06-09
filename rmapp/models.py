@@ -108,8 +108,8 @@ class Equipment_Vendor(models.Model):
     vendor_taluk = models.CharField(max_length=50,blank=True,null=True,verbose_name="Taluk")
     vendor_district = models.CharField(max_length=100,blank=True,null=True, verbose_name="District")
     vendor_pincode = models.CharField(max_length=20,blank=True, null=True, verbose_name= "Pincode")
-    vendor_shop_name = models.CharField(max_length=20,blank=True, null=True , verbose_name="Vendor Shop Nme")
-    vendor_avilability= models.CharField(max_length=200, blank=True, null=True, verbose_name= "Vendor Avilability")
+    vendor_shop_name = models.CharField(max_length=20,blank=True, null=True , verbose_name="Shop Nme")
+    vendor_availability= models.CharField(max_length=200, blank=True, null=True, verbose_name= "Vendor Availability")
     vendor_review = models.CharField(max_length=200, blank=True, null=True, verbose_name= "Vendor Review")
     vendor_rating= models.CharField(max_length=1, choices=Ratings, default='5', verbose_name="Vendors Rating")
 
