@@ -77,7 +77,21 @@ class Customer(models.Model):
     def __str__(self):
         return self.customer_name
 
-class Crop(models.Model):
+
+class seeds_vendor(models.Model):
+
+    seeds_vendor_name = models.CharField(max_length=100, blank=True, null=True, verbose_name=" seeds vendor Name")
+    shop_name = models.CharField(max_length=120, blank=True, null=True,verbose_name="shop name")
+    seeds_vendor_village = models.CharField(max_length=13, blank=True,null=True,verbose_name="seeds vendor_village")
+    seeds_vendor_taluk = models.CharField(max_length=13,blank=True,null=True,verbose_name="seeds vendor_taluk")
+    seeds_vendor_district = models.CharField(max_length=1,blank=True,null=True,verbose_name="seeds vendor_district")
+    seeds_vendor_pincode = models.CharField(max_length=20,blank=True,null=True,verbose_name="seeds vendor_pincode")
+    seeds_vendor_availability = models.CharField(max_length=200, blank=True, null=True, verbose_name= "seeds vendor_availability")
+    
+    def __str__(self):
+        return self.seeds_vendor_name
+    
+class Crop(models.Model):    
 
     Type = (('Fo','Food Crop'),
         ('Fe','Feed Crop'),
