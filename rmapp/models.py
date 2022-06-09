@@ -65,8 +65,8 @@ class Customer(models.Model):
 
     customer_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Customer Name")
     customer_address = models.CharField(max_length=120, blank=True, null=True,verbose_name="Customer Address")
-    customer_pri_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Customer Pri_Phone")
-    customer_sec_phone = models.CharField(max_length=13,blank=True,null=True,verbose_name="Customer Sec_Phone")
+    customer_pri_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Customer Primary Phone")
+    customer_sec_phone = models.CharField(max_length=13,blank=True,null=True,verbose_name="Customer Secondary Phone")
     customer_dob = models.DateField(blank=True,null=True,verbose_name="DOB")
     customer_gender = models.CharField(max_length=1, choices=Gender , default='M', verbose_name="Gender")
     customer_email = models.EmailField(blank=True, null=True, verbose_name= "Email Address")
@@ -78,6 +78,37 @@ class Customer(models.Model):
         return self.customer_name
 
 class Crop(models.Model):
-    
-    
 
+    Type = (('Fo','Food Crop'),
+        ('Fe','Feed Crop'),
+        ('Fi','Fiber Crop'),
+        ('Oi','Oil Crop'),
+        ('Or','Ornamental Crop'),
+        ('In','Industrial Crop'))
+
+    crop_name = models.CharField(max_length=100, blank= True, null=True,verbose_name="Crop Name")
+    crop_description = models.CharField(max_length=200, blank=True, null=True, verbose_name= "Crop Description")
+    crop_type = models.CharField(max_length=2, choices=Type , default='Fo', verbose_name="Crop Type")
+    crop_average_rate_in_market = models.CharField(max_length=15, blank=True,null=True,verbose_name="Crop Average Rate In Market")
+    crop_cost_to_grow = models.CharField(max_length=14, blank=True,null=True,verbose_name="Crop Cost To Grow")
+    crop_diseases = models.CharField(max_length=200, blank=True, null=True, verbose_name= "Crop Diseases")
+    crop_seeds_per_acre = models.CharField(max_length=14,blank=True,null=True,verbose_name="Crop Seeds Per Acre")
+
+    def __str__(self):
+        return self.crop_name
+
+class Lands(models.Model):
+
+    Type = (('Ar','Arable Crop Land'),
+        ('Pr','Permanent Crop Land'),
+        ('Pe','Permanent Grassland'))
+
+    land_type = models.CharField(max_length=2, choices=Type, default='Ar' verbose_name="Land Type")
+    land_description = models.CharField(max_length=200, blank=True, null=True,verbose_name="Land Description")
+    land_details = models.CharField(max_length=200, blank=True,null=True,verbose_name="Land Details")
+    land_suitable_crop_details = models.CharField(max_length=120, blank=True, null=True,verbose_name="Crop Suitable Land Details")
+
+    def __str__(self):
+        return self.land_details
+    
+    
