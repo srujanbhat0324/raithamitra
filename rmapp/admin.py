@@ -1,6 +1,6 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from .models import AppUser, Customer
+from .models import AppUser, Customer, Crop
 from django.contrib.auth.admin  import UserAdmin
 
 # Register your models here.
@@ -24,3 +24,4 @@ class UserAdminConfig(UserAdmin):
 
 admin.site.register(AppUser, UserAdminConfig)
 admin.site.register(Customer)
+admin.site.register(Crop)
