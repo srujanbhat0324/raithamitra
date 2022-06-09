@@ -78,6 +78,39 @@ class Customer(models.Model):
         return self.customer_name
 
 class Crop(models.Model):
+class Pestisides(models.Model):
+
+     pestisides_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Pestisides name")
+     pestisides_cost = models.CharField(max_length=120, blank=True, null=True,verbose_name="Pestisides cost")
+     pestisises_methods_to_use = models.CharField(max_length=13, blank=True,null=True,verbose_name="pestisides methods to use")
+
+def __str__(self):
+        return self.pestides_name     
+
+class Equipments(models.Model):
+
+    equipments_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="equipments Name")
+    equipments_type = models.CharField(max_length=2, blank=True, null=True,verbose_name="equipments type of equipments")
+    equipments_cost= models.CharField(max_length=13, blank=True,null=True,verbose_name="equipments cost")
+    equipments_life_time = models.CharField(max_length=13,blank=True,null=True,verbose_name="Lifetime Of Equipments")
+
+    def __str__(self):
+        return self.equipments_name  
+
+ class Inorganic_Fertilizers(models.Model):
+
+    fertilizers_name = models.CharField(max_length=100, blank=True, null=True, verbose_name=" fertilizers name")
+    fertilizers_cost= models.CharField(max_length=120, blank=True, null=True,verbose_name="fertilizers cost")
+    fertilizers_methods_to_use = models.CharField(max_length=13, blank=True,null=True,verbose_name="fertilizers methods to use")
+    fertilizers_diffrent_types = models.CharField(max_length=13,blank=True,null=True,verbose_name="fertilizers diffrent types") 
+
+
+  def __str__(self):
+        return self.fertilizers_name
+
+ 
+    
+class Crop(models.Model):  
 
     Type = (('Fo','Food Crop'),
         ('Fe','Feed Crop'),
