@@ -77,35 +77,44 @@ class Customer(models.Model):
     def __str__(self):
         return self.customer_name
 
-class Labourers(models.Model):
-    labourers_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Labourers Name")
-    labourers_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Labourers Phone")
-    labourers_village = models.DateField(blank=True,null=True,verbose_name="village")
-    labourers_taluk = models.CharField(max_length=100, verbose_name="taluk")
-    labourers_district = models.CharField(max_length=50,blank=True, null=True, verbose_name= "District")
-    labourers_pincode = models.CharField(max_length=20, choices=Status, default= 'NEW', verbose_name="Labourers Pincode")
-    labourers_Specialize_in_certain_work = models.CharField(max_length=200, blank=True, null=True, verbose_name= "Labourers spacilize in work")
-    labourers_availability = models.CharField(max_length=1, choices=Ratings, default='5', verbose_name="Labourers Availability")
+class Labourer(models.Model):
+    labourer_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Labourer Name")
+    labourer_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Labourer Phone")
+    labourer_village = models.CharField(max_length=50,blank=True,null=True,verbose_name="Village")
+    labourer_taluk = models.CharField(max_length=100, blank=True,null=True,verbose_name="Taluk")
+    labourer_district = models.CharField(max_length=50,blank=True, null=True, verbose_name= "District")
+    labourer_pincode = models.CharField(max_length=20, blank=True,null=True, verbose_name="Pincode")
+    labourer_Specialize_in_certain_work = models.CharField(max_length=200, blank=True, null=True, verbose_name= "Specialize in Certain Work")
+    labourer_availability = models.CharField(max_length=50,blank=True,null=True, verbose_name="Labourer Availability")
 
     def __str__(self):
-        return self.labourers_name
+        return self.labourer_name
 
 
 
-class Equipment_Vendors()
-    vendors_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Vendors Name")
-    vendors_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Vendors Phone")
-    vendors_email_id = models.CharField(max_length=13, blank=True,null=True,verbose_name="Vendors Email Id")
-    vendors_village= models.CharField(max_length=13,blank=True,null=True,verbose_name="Village")
-    vendors_taluk = models.DateField(blank=True,null=True,verbose_name="Taluk")
-    vendors_district = models.CharField(max_length=1, choices=Gender , default='M', verbose_name="District")
-    vendors_pincode = models.EmailField(blank=True, null=True, verbose_name= "Vendors Pincode")
-    vendors_shop_name = models.CharField(max_length=20, choices=Status, default= 'NEW', verbose_name="Vendors Shop Nme")
-    vendors_avilability= models.CharField(max_length=200, blank=True, null=True, verbose_name= "Vendors Avilability")
-    vendors_rating_and_reveiws= models.CharField(max_length=1, choices=Ratings, default='5', verbose_name="Vendors Rating")
+class Equipment_Vendor(models.Model):
+
+    Ratings = (('1', '*'),
+        ('2','**'),
+        ('3','***'),
+        ('4','****'),
+        ('5','*****'))
+
+    equipment_name = models.ForeignKey(Equipment, on_delete=models.PROTECT, null=True,verbose_name="Equipment Name")
+    vendor_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Vendor Name")
+    vendor_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Phone Number")
+    vendor_email_id = models.EmailField(max_length=50, blank=True,null=True,verbose_name="Email Id")
+    vendor_village= models.CharField(max_length=50,blank=True,null=True,verbose_name="Village")
+    vendor_taluk = models.CharField(max_length=50,blank=True,null=True,verbose_name="Taluk")
+    vendor_district = models.CharField(max_length=100,blank=True,null=True, verbose_name="District")
+    vendor_pincode = models.CharField(max_length=20,blank=True, null=True, verbose_name= "Pincode")
+    vendor_shop_name = models.CharField(max_length=20,blank=True, null=True , verbose_name="Vendor Shop Nme")
+    vendor_avilability= models.CharField(max_length=200, blank=True, null=True, verbose_name= "Vendor Avilability")
+    vendor_review = models.CharField(max_length=200, blank=True, null=True, verbose_name= "Vendor Review")
+    vendor_rating= models.CharField(max_length=1, choices=Ratings, default='5', verbose_name="Vendors Rating")
 
     def __str__(self):
-        return self.equipment_vender_name
+        return self.vendor_name
     
     
 
@@ -122,8 +131,8 @@ class seeds_vendor(models.Model):
     def __str__(self):
         return self.seeds_vendor_name
     
-class Crop(models.Model):    
-class Crop(models.Model):
+ 
+
 class Pestisides(models.Model):
 
      pestisides_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Pestisides name")
@@ -133,22 +142,22 @@ class Pestisides(models.Model):
 def __str__(self):
         return self.pestides_name     
 
-class Equipments(models.Model):
+class Equipment(models.Model):
 
-    equipments_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="equipments Name")
-    equipments_type = models.CharField(max_length=2, blank=True, null=True,verbose_name="equipments type of equipments")
-    equipments_cost= models.CharField(max_length=13, blank=True,null=True,verbose_name="equipments cost")
-    equipments_life_time = models.CharField(max_length=13,blank=True,null=True,verbose_name="Lifetime Of Equipments")
+    equipment_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Equipment Name")
+    equipment_type = models.CharField(max_length=2, blank=True, null=True,verbose_name="equipments type of equipments")
+    equipment_cost= models.CharField(max_length=13, blank=True,null=True,verbose_name="equipments cost")
+    equipment_life_time = models.CharField(max_length=13,blank=True,null=True,verbose_name="Lifetime Of Equipments")
 
     def __str__(self):
-        return self.equipments_name  
+        return self.equipment_name  
 
  class Inorganic_Fertilizers(models.Model):
 
     fertilizers_name = models.CharField(max_length=100, blank=True, null=True, verbose_name=" fertilizers name")
     fertilizers_cost= models.CharField(max_length=120, blank=True, null=True,verbose_name="fertilizers cost")
     fertilizers_methods_to_use = models.CharField(max_length=13, blank=True,null=True,verbose_name="fertilizers methods to use")
-    fertilizers_diffrent_types = models.CharField(max_length=13,blank=True,null=True,verbose_name="fertilizers diffrent types") 
+    fertilizers_types = models.CharField(max_length=13,blank=True,null=True,verbose_name="fertilizers  types") 
 
 
   def __str__(self):
