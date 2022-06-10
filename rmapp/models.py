@@ -239,7 +239,6 @@ class Equipment_Vendor(models.Model):
         ('4','****'),
         ('5','*****'))
 
-    equipment_name = models.ForeignKey(Equipment, on_delete=models.PROTECT, null=True,verbose_name="Equipment Name")
     vendor_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Vendor Name")
     vendor_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Phone Number")
     vendor_email_id = models.EmailField(max_length=50, blank=True,null=True,verbose_name="Email Id")
@@ -302,7 +301,6 @@ class Seeds_Vendor(models.Model):
         ('4','****'),
         ('5','*****'))
 
-    seed_name = models.ForeignKey(Seed, on_delete=models.PROTECT , null=True , verbose_name="Seed Name")
     vendor_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Vendor Name")
     vendor_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Phone Number")
     vendor_email_id = models.EmailField(max_length=50, blank=True,null=True,verbose_name="Email Id")
@@ -346,7 +344,6 @@ class Pesticides_Vendor(models.Model):
         ('4','****'),
         ('5','*****'))
 
-    pesticides_name = models.ForeignKey(Pesticides, on_delete=models.PROTECT, null=True , verbose_name="Pesticides Name")
     vendor_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Vendor Name")
     vendor_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Phone Number")
     vendor_email_id = models.EmailField(max_length=50, blank=True,null=True,verbose_name="Email Id")
@@ -399,7 +396,6 @@ class Inorganic_Fertlizer_Vendor(models.Model):
         ('4','****'),
         ('5','*****'))
 
-    fertilizer_name = models.ForeignKey(Inorganic_Fertilizers, on_delete=models.PROTECT, null=True,verbose_name="Fertilizer Name")
     vendor_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Vendor Name")
     vendor_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Phone Number")
     vendor_email_id = models.EmailField(max_length=50, blank=True,null=True,verbose_name="Email Id")
@@ -453,7 +449,6 @@ class Organic_Fertlizer_Vendor(models.Model):
         ('4','****'),
         ('5','*****'))
 
-    fertilizer_name = models.ForeignKey(Organic_Fertilizers, on_delete=models.PROTECT, null=True,verbose_name="Fertilizer Name")
     vendor_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Vendor Name")
     vendor_phone = models.CharField(max_length=13, blank=True,null=True,verbose_name="Phone Number")
     vendor_email_id = models.EmailField(max_length=50, blank=True,null=True,verbose_name="Email Id")
