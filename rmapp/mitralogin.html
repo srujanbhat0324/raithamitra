@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family:Arial, Helvetica, sans-serif}
+* {box-sizing: border-box}
+
+.speaker{
+    text-align: center;
+    background-color: white;
+    border: 1px solid whitesmoke;
+    width: 50%;
+    height: 20%;
+    margin: 40px 0;
+    padding: 50px;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #0f0f0f;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  align-content: right;
+}
+label{
+    float: left;
+}
+
+img {
+width:20% ;
+ border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+}
+</style>
+</head>
+<body>
+   
+
+<h2>Login Form</h2>
+<header class="speaker">
+    <form action="/action_page.php" method="post">
+        <div class="imgcontainer">
+          <img src="C:\Users\DELL\Pictures\Saved Pictures\blank-profile-picture-973460_640 (1).webp" alt="profile" class="profile">
+        </div>
+      
+        <div class="red">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+              
+          <button type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+      
+        <div class="container" style="background-color:#f1f1f1"> 
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </form>
+</header>
+
+
+
+</body>
+</html>
