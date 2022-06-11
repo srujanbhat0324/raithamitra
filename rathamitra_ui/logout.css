@@ -1,0 +1,58 @@
+body{
+    background:url(super.jpg) center;
+    
+    
+}
+header{
+    margin-left: 0%;
+    margin-top: 0%;
+    background-color:white;
+    height: 50px;
+}
+img{
+    margin-left: 0%;
+}
+
+div{
+    width: 400px;
+    height: 200px;
+    color:;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    margin-left:600px;
+    margin-top: 200px;
+    
+    
+}
+.btntwo {
+    padding: 12px 30px;
+    border-radius: 4px;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.5s ease;
+  }
+  
+.btnone {
+    /*background: #00b894;*/
+    background: #00b894;
+    color: #000;
+  }
+  
+.btnone {
+    background: #00b894;
+    color: white;
+  }
+  
+.btntwo {
+    background: #00b894;
+    color: white;
+  }
+  
+  .btntwo:hover {
+    background:#00b894;
+    color:white;
+  }
