@@ -396,8 +396,8 @@ def Inorganic_Fertilizers_detail(request,pk):
 
 class API_Inorganic_Fertilizer_Vendor(APIView):
     def get(self, request):
-        Inorganic_Fertlizer_Vendor = inorganic_fertlizer_vendor.objects.all().order_by('id')
-        serializer = Inorganic_Fertlizer_VendorSerializer(Inorganic_Fertlizer_Vendor, many=True)
+        Inorganic_Fertlizer_Vendors = Inorganic_Fertlizer_Vendor.objects.all().order_by('id')
+        serializer = Inorganic_Fertlizer_VendorSerializer(Inorganic_Fertlizer_Vendors, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -411,16 +411,16 @@ class API_Inorganic_Fertilizer_Vendor(APIView):
 @api_view(['GET','PUT'])
 def Inorganic_Fertlizer_Vendor_detail(request,pk):
     try:
-        Inorganic_Fertlizer_Vendor = inorganic_fertlizer_vendor.objects.get(pk=pk)
-    except Inorganic_Fertlizer_Vendor.DoesNotExist:
+        Inorganic_Fertlizer_Vendors = Inorganic_Fertlizer_Vendor.objects.get(pk=pk)
+    except Inorganic_Fertlizer_Vendors.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = Inorganic_Fertlizer_VendorSerializer(Inorganic_Fertlizer_Vendor)
+        serializer = Inorganic_Fertlizer_VendorSerializer(Inorganic_Fertilizer_Vendors)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = Inorganic_Fertlizer_VendorSerializer(Inorganic_Fertlizer_Vendor,data=request.data)
+        serializer = Inorganic_Fertlizer_VendorSerializer(Inorganic_Fertilizer_Vendors,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
