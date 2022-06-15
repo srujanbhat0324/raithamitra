@@ -10,8 +10,8 @@ from .serializers import CustomerSerializer, CropSerializer, LandSerializer, Sea
 
 class API_Customer(APIView):
     def get(self, request):
-        Customer = customer.objects.all().order_by('id')
-        serializer = CustomerSerializer(Customer, many=True)
+        Customers = Customer.objects.all().order_by('id')
+        serializer = CustomerSerializer(Customers, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -25,16 +25,16 @@ class API_Customer(APIView):
 @api_view(['GET','PUT'])
 def customer_detail(request,pk):
     try:
-        Customer = customer.objects.get(pk=pk)
-    except Customer.DoesNotExist:
+        Customers = Customer.objects.get(pk=pk)
+    except Customers.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = CustomerSerializer(Customer)
+        serializer = CustomerSeralizer(Customers)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = CustomerSerializer(Customer,data=request.data)
+        serializer = CustomerSerializer(Customers,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -42,8 +42,8 @@ def customer_detail(request,pk):
     
 class API_Crop(APIView):
     def get(self, request):
-        Crop = crop.objects.all().order_by('id')
-        serializer = CropSerializer(Crop, many=True)
+        Crops = Crop.objects.all().order_by('id')
+        serializer = CropSerializer(Crops, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -57,16 +57,16 @@ class API_Crop(APIView):
 @api_view(['GET','PUT'])
 def Crop_detail(request,pk):
     try:
-        Crop = crop.objects.get(pk=pk)
-    except Crop.DoesNotExist:
+        Crops = Crop.objects.get(pk=pk)
+    except Crops.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = CropSerializer(Crop)
+        serializer = CropSerializer(Crops)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = CropSerializer(Crop,data=request.data)
+        serializer = CropSerializer(Crops,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -76,8 +76,8 @@ def Crop_detail(request,pk):
 
 class API_Land(APIView):
     def get(self, request):
-        Land = land.objects.all().order_by('id')
-        serializer = LandSerializer(Land, many=True)
+        Lands = Land.objects.all().order_by('id')
+        serializer = LandSerializer(Lands, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -91,16 +91,16 @@ class API_Land(APIView):
 @api_view(['GET','PUT'])
 def Land_detail(request,pk):
     try:
-        Land = land.objects.get(pk=pk)
-    except Land.DoesNotExist:
+        Lands = Land.objects.get(pk=pk)
+    except Lands.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = LandSerializer(Land)
+        serializer = LandSerializer(Lands)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = LandSerializer(Land,data=request.data)
+        serializer = LandSerializer(Lands,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -108,8 +108,8 @@ def Land_detail(request,pk):
 
 class API_Season(APIView):
     def get(self, request):
-        Season = season.objects.all().order_by('id')
-        serializer = SeasonSerializer(Season, many=True)
+        Seasons = Season.objects.all().order_by('id')
+        serializer = SeasonSerializer(Seasons, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -123,16 +123,16 @@ class API_Season(APIView):
 @api_view(['GET','PUT'])
 def Season_detail(request,pk):
     try:
-        Season = season.objects.get(pk=pk)
-    except Season.DoesNotExist:
+        Seasons = Season.objects.get(pk=pk)
+    except Seasons.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = SeasonSerializer(Season)
+        serializer = SeasonSerializer(Seasons)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = SeasonSerializer(Season,data=request.data)
+        serializer = SeasonSerializer(Seasons,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -140,8 +140,8 @@ def Season_detail(request,pk):
 
 class API_Labourer(APIView):
     def get(self, request):
-        Labourer = labourer.objects.all().order_by('id')
-        serializer = LabourerSerializer(Labourer, many=True)
+        Labourers = Labourer.objects.all().order_by('id')
+        serializer = LabourerSerializer(Labourers, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -155,16 +155,16 @@ class API_Labourer(APIView):
 @api_view(['GET','PUT'])
 def Labourer_detail(request,pk):
     try:
-        Labourer = labourer.objects.get(pk=pk)
-    except Labourer.DoesNotExist:
+        Labourers = Labourer.objects.get(pk=pk)
+    except Labourers.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = LabourerSerializer(Labourer)
+        serializer = LabourerSerializer(Labourers)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = LabourerSerializer(Labourer,data=request.data)
+        serializer = LabourerSerializer(Labourers,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -172,8 +172,8 @@ def Labourer_detail(request,pk):
 
 class API_Equipment(APIView):
     def get(self, request):
-        Equipment = equipment.objects.all().order_by('id')
-        serializer = EquipmentSerializer(Equipment, many=True)
+        Equipments = Equipment.objects.all().order_by('id')
+        serializer = EquipmentSerializer(Equipments, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -187,16 +187,16 @@ class API_Equipment(APIView):
 @api_view(['GET','PUT'])
 def Equipment_detail(request,pk):
     try:
-        Equipment = equipment.objects.get(pk=pk)
-    except Equipment.DoesNotExist:
+        Equipments = Equipment.objects.get(pk=pk)
+    except Equipments.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = EquipmentSerializer(Equipment)
+        serializer = EquipmentSerializer(Equipments)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = EquipmentSerializer(Equipment,data=request.data)
+        serializer = EquipmentSerializer(Equipments,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -204,8 +204,8 @@ def Equipment_detail(request,pk):
 
 class API_Equipment_Vendor(APIView):
     def get(self, request):
-        Equipment_Vendor = equipment_vendor.objects.all().order_by('id')
-        serializer = Equipment_VendorSerializer(Equipment_Vendor, many=True)
+        Equipment_Vendors = Equipment_Vendor.objects.all().order_by('id')
+        serializer = Equipment_VendorSerializer(Equipment_Vendors, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -219,16 +219,16 @@ class API_Equipment_Vendor(APIView):
 @api_view(['GET','PUT'])
 def Equipment_Vendor_detail(request,pk):
     try:
-        Equipment_Vendor = equipment_vendor.objects.get(pk=pk)
-    except Equipment_Vendor.DoesNotExist:
+        Equipment_Vendors = Equipment_Vendor.objects.get(pk=pk)
+    except Equipment_Vendors.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = Equipment_VendorSerializer(Equipment_Vendor)
+        serializer = Equipment_VendorSerializer(Equipment_Vendors)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = Equipment_VendorSerializer(Equipment_Vendor,data=request.data)
+        serializer = Equipment_VendorSerializer(Equipment_Vendors,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -236,8 +236,8 @@ def Equipment_Vendor_detail(request,pk):
 
 class API_Seed(APIView):
     def get(self, request):
-        Seed = seed.objects.all().order_by('id')
-        serializer = SeedSerializer(Seed, many=True)
+        Seeds = Seed.objects.all().order_by('id')
+        serializer = SeedSerializer(Seeds, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -251,16 +251,16 @@ class API_Seed(APIView):
 @api_view(['GET','PUT'])
 def Seed_detail(request,pk):
     try:
-        Seed = seed.objects.get(pk=pk)
-    except Seed.DoesNotExist:
+        Seeds = Seed.objects.get(pk=pk)
+    except Seeds.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = SeedSerializer(Seed)
+        serializer = SeedSerializer(Seeds)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = SeedSerializer(Seed,data=request.data)
+        serializer = SeedSerializer(Seeds,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -300,7 +300,7 @@ def Seeds_Vendor_detail(request,pk):
 
 class API_Pesticides(APIView):
     def get(self, request):
-        Pesticides = pesticides.objects.all().order_by('id')
+        Pesticides = Pesticide.objects.all().order_by('id')
         serializer = PesticidesSerializer(Pesticides, many=True)
         return Response(serializer.data)
 
@@ -315,7 +315,7 @@ class API_Pesticides(APIView):
 @api_view(['GET','PUT'])
 def Pesticides_detail(request,pk):
     try:
-        Pesticides = pesticides.objects.get(pk=pk)
+        Pesticides = Pesticide.objects.get(pk=pk)
     except Pesticides.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -332,8 +332,8 @@ def Pesticides_detail(request,pk):
 
 class API_Pesticides_Vendor(APIView):
     def get(self, request):
-        Pesticides_Vendor = pesticides_vendor.objects.all().order_by('id')
-        serializer = Pesticides_VendorSerializer(Pesticides_Vendor, many=True)
+        Pesticides_Vendors = Pesticides_Vendor.objects.all().order_by('id')
+        serializer = Pesticides_VendorSerializer(Pesticides_Vendors, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -347,16 +347,16 @@ class API_Pesticides_Vendor(APIView):
 @api_view(['GET','PUT'])
 def Pesticides_Vendor_detail(request,pk):
     try:
-        Pesticides_Vendor = pesticides_vendor.objects.get(pk=pk)
-    except Pesticides_Vendor.DoesNotExist:
+        Pesticides_Vendors = Pesticides_Vendor.objects.get(pk=pk)
+    except Pesticides_Vendors.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = Pesticides_VendorSerializer(Pesticides_Vendor)
+        serializer = Pesticides_VendorSerializer(Pesticides_Vendors)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = Pesticides_VendorSerializer(Pesticides_Vendor,data=request.data)
+        serializer = Pesticides_VendorSerializer(Pesticides_Vendors,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -364,7 +364,7 @@ def Pesticides_Vendor_detail(request,pk):
 
 class API_Inorganic_Fertilizers(APIView):
     def get(self, request):
-        Inorganic_Fertilizers = inorganic_fertilizers.objects.all().order_by('id')
+        Inorganic_Fertilizers = Inorganic_Fertilizers.objects.all().order_by('id')
         serializer = Inorganic_FertilizersSerializer(Inorganic_Fertilizers, many=True)
         return Response(serializer.data)
 
@@ -379,7 +379,7 @@ class API_Inorganic_Fertilizers(APIView):
 @api_view(['GET','PUT'])
 def Inorganic_Fertilizers_detail(request,pk):
     try:
-        Inorganic_Fertilizers = inorganic_fertilizers.objects.get(pk=pk)
+        Inorganic_Fertilizers = Inorganic_Fertilizers.objects.get(pk=pk)
     except Inorganic_Fertilizers.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
