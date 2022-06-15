@@ -21,6 +21,24 @@ class API_Customer(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','PUT'])
+def customer_detail(request,pk):
+    try:
+        Customer = customer.objects.get(pk=pk)
+    except Customer.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = CustomerSerializer(Customer)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = CustomerSerializer(Customer,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class API_Crop(APIView):
     def get(self, request):
