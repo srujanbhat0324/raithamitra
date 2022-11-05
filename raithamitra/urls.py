@@ -27,6 +27,7 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/',include('django.contrib.auth.urls')),
     path('api/', include(router.urls)),
     url(r'^api/Customer/', views.API_Customer.as_view()),
     url(r'^api/Crops/', views.API_Crop.as_view()),
@@ -84,4 +85,7 @@ urlpatterns = [
     path('Organic_Fertilizers_Available/<int:pk>', views.Organic_Fertilizers_Available_detail),
     path('Pesticides_Available/<int:pk>', views.Pesticides_Available_detail),
     path('Seeds_Available/<int:pk>', views.Seeds_Available_detail),
+    path('Customer_list', views.CustomerListView.as_view(), name='customer_list'),
+    path('add_profile/', views.CustomerCreateView.as_view(), name='add_profile'),
+    path('update_profile/<int:pk>', views.CustomerUpdateView.as_view(), name='update_profile'),
 ]

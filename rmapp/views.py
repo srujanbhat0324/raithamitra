@@ -4,9 +4,39 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response 
 from rest_framework.views import APIView
 from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView 
 from django.contrib.auth.decorators import login_required
+from django import forms
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import CustomerForm
+from django.contrib.auth.models import User       
+from .models import Customer
+from .filters import CustomerFilterSet
+from bootstrap_modal_forms.generic import (BSModalCreateView, BSModalUpdateView, BSModalReadView, BSModalDeleteView) 
+from django.contrib import messages
+from django_filters.views import BaseFilterView
 from .models import  Customer, Crop, Land, Season, Labourer, Equipment, Equipment_Vendor, Seed, Seeds_Vendor, Pesticides, Pesticides_Vendor, Inorganic_Fertilizers, Inorganic_Fertlizer_Vendor, Organic_Fertilizers, Organic_Fertlizer_Vendor,  Soil_Test, Equipment_Mapping, Organic_Fertilizers_Mapping, Inorganic_Fertilizers_Mapping, Pesticides_Mapping, Seeds_Mapping, Season_Mapping, Potential_Market, Equipment_Available, Inorganic_Fertilizers_Available, Organic_Fertilizers_Available, Pesticides_Available, Seeds_Available
 from .serializers import CustomerSerializer, CropSerializer, LandSerializer, SeasonSerializer, LabourerSerializer, EquipmentSerializer, Equipment_VendorSerializer, SeedSerializer, Seeds_VendorSerializer, PesticidesSerializer, Pesticides_VendorSerializer, Inorganic_FertilizersSerializer, Inorganic_Fertlizer_VendorSerializer, Organic_FertilizersSerializer, Organic_Fertlizer_VendorSerializer,  Soil_TestSerializer, Equipment_MappingSerializer, Organic_Fertilizers_MappingSerializer, Inorganic_Fertilizers_MappingSerializer, Pesticides_MappingSerializer, Seeds_MappingSerializer, Season_MappingSerializer, Potential_MarketSerializer, Equipment_AvailableSerializer, Inorganic_Fertilizers_AvailableSerializer, Organic_Fertilizers_AvailableSerializer, Pesticides_AvailableSerializer, Seeds_AvailableSerializer
+
+class CustomerListView(BaseFilterView,ListView):
+    template_name="rmapp/customer.html"
+    model=Customer
+    paginate_by=25
+    context_object_name='Customer'
+    filterset_class=CustomerFilterSet
+
+class CustomerCreateView (BSModalCreateView):
+    template_name="rmapp/add_profile.html"
+    form_class=CustomerForm
+    success_message='Success:Customer Details were updated'
+    success_url=reverse_lazy('Customer_list')
+
+class CustomerUpdateView(BSModalUpdateView):
+    model=Customer
+    template_name='rmapp/update_profile.html'
+    form_class=CustomerForm
+    success_message='Success:Customer Details were updated'
+    success_url=reverse_lazy('Customer_list')
 
 class API_Customer(APIView):
     def get(self, request):
