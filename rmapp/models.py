@@ -28,7 +28,7 @@ class AppUserManager(BaseUserManager):
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
 
-    email = models.EmailField(max_length=254, unique=True,verbose_name="Email_id")
+    email = models.EmailField(max_length=254, unique=True, verbose_name="Email_id")
     first_name = models.CharField(max_length=80, null=True, verbose_name = "First Name")
     last_name = models.CharField(max_length=80, null=True, verbose_name = "Last Name")
     branch_code = models.CharField(max_length=20, null=True, verbose_name = "Branch Code")
